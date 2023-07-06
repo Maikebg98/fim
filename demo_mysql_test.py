@@ -23,28 +23,29 @@ mycursor = mydb.cursor()
 # mycursor.execute("SHOW TABLES")
 # for x in mycursor:
 #     print(x)
+# resp = input("Bem vindo! \nInforme uma opção para prosseguir. \n1 - Visualizar despesas cadastradas \n2 - Visualzar saldo \n---> ")
 
-resp = input("Bem vindo! \nInforme uma opção para prosseguir. \n1 - Visualizar despesas cadastradas \n2 - Visualzar saldo \n---> ")
-if resp == "1":
-    mycursor.execute("SELECT name, value FROM despesas")
-    myresult = mycursor.fetchall()
-    print(myresult)
-    for x in myresult:
-        print(x)
+print("BEM VINDO!!!")
+mycursor.execute("SELECT name, value FROM renda")
+myresult = mycursor.fetchall()
 
-elif resp == "2":
-    mycursor.execute("SELECT name, value FROM renda")
-    myresult = mycursor.fetchall()
+# para imprimir os valores sem parenteses é necessario anexar o resultado em uma lista
+saldo = []
+for x in myresult:
+    print("O valor de " + x[0] )
 
-    if myresult == 0 :
-        print("Sem Saldo registrado!")
-        
-    elif myresult != 0:
-        for x in myresult:
-            print(x)
+# mycursor.execute("SELECT name, value FROM despesas")
+# myresult = mycursor.fetchall()
+# for x in myresult:
+#     print(x)
 
-else:
-    print("Valor incorreto!")
+#Caso selecione 2
+# elif resp == "2":
+#     print("teste")
+
+# Caso não informe uma opção correta
+# else:
+#     print("Valor incorreto!")
 
 # Inserir despesa no banco de dados
 # name_desp = input("Informe o Nome da despesa: ")
